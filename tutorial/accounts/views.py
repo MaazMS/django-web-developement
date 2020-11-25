@@ -1,7 +1,6 @@
 from django.shortcuts import render , HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm
 from accounts.forms import RegistrationForm
-# Create your views here.
 
 def homepage(request):
     return HttpResponse("This is home page ")
@@ -18,16 +17,16 @@ def passing_value(request):
 def override(request):
     return render(request, 'accounts/override.html')
 
-# def register(request):
-#     if request.method == "POST":
-#         form = UserCreationForm(request.post)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/accounts')
-#     else:
-#         form = UserCreationForm()
-#         args = {'form' : form}
-#         return render(request, 'accounts/register.html', args)
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts')
+    else:
+        form = UserCreationForm()
+        args = {'form' : form}
+        return render(request, 'accounts/register.html', args)
 
 # custom_register.html
 
@@ -41,3 +40,7 @@ def custom_register(request):
         form = RegistrationForm()
         args = {'form' : form}
         return render(request, 'accounts/custom_register.html', args)
+
+def user_profile(request):
+    args = {'user' : request.user}
+    return render(request, 'accounts/extract_user_data.html', args)
