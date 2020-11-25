@@ -1,0 +1,12 @@
+
+{% block head%}
+    <meta charset="UTF-8">
+    <title>customr register form</title>
+{% endblock %}
+
+{% block body%}
+<form method="post">
+    {%  csrf_token %}
+    {{ form.as_p}}
+</form>
+{% endblock %}
