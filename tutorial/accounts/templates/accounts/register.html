@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head%}
+    <meta charset="UTF-8">
+    <title>register form</title>
+{% endblock %}
+
+{% block body%}
+<form method="post">
+    {%  csrf_token %}
+    {{ form.as_p}}
+</form>
+{% endblock %}
