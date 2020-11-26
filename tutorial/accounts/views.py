@@ -41,9 +41,6 @@ def custom_register(request):
         args = {'form' : form}
         return render(request, 'accounts/custom_register.html', args)
 
-
-
-
 def user_profile(request):
     args = {'user' : request.user}
     return render(request, 'accounts/extract_user_data.html', args)
