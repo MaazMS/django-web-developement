@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^login/',login, {'template_name': 'accounts/login.html'}),
     url(r'^logout/',logout, {'template_name': 'accounts/logout.html'}),
     # url(r'register/', views.register),
-    url(r'^custom_register/', views.custom_register)
+    url(r'^custom_register/', views.custom_register),
+    url(r'^user_profile', views.user_profile),
+    # url(r'^edit_user_profile', views.edit_user_profile),
+    url(r'^edit_personal_info', views.Edit_personal_info)
 ]
