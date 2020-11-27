@@ -4,6 +4,7 @@ from django.contrib.auth.forms import (
     UserChangeForm,
     PasswordChangeForm,
 )
+from django.contrib.auth import update_session_auth_hash
 from accounts.forms import RegistrationForm , Edit_personal_details
 
 
@@ -46,9 +47,9 @@ def override(request):
 #         args = {'form' : form}
 #         return render(request, 'accounts/custom_register.html', args)
 #
-# def user_profile(request):
-#     args = {'user' : request.user}
-#     return render(request, 'accounts/extract_user_data.html', args)
+def user_profile(request):
+    args = {'user' : request.user}
+    return render(request, 'accounts/extract_user_data.html', args)
 #
 # def edit_user_profile(request):
 #     if request.method == 'POST':
@@ -79,6 +80,7 @@ def change_password(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
+            update_session_auth_hash(request, form.user)
             return redirect('/accounts')
     else:
         form = PasswordChangeForm(user=request.user)
