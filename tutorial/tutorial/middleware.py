@@ -1,8 +1,12 @@
 import re
 from django.conf import settings
 from django.shortcuts import redirect
+from django.urls import reverse
+from django.contrib.auth import logout
 
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
+
+# check url is exist in settings.py fir variable LOGIN_EXEMPT_URLS then add EXEMPT_URLS
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
     EXEMPT_URLS += [re.compile(url)for url in settings.LOGIN_EXEMPT_URLS]
 
@@ -18,6 +22,23 @@ class LoginRequiredMiddleware:
         assert  hasattr(request, 'user')
         path = request.path_info.lstrip('/')
 
-        if not request.user.is_authenticated():
-            if not any(url.match(path) for url in EXEMPT_URLS ):
-               return redirect(settings.LOGIN_URL)
+        # if user is not  authenticated
+        # if not request.user.is_authenticated():
+        #     if not any(url.match(path) for url in EXEMPT_URLS ):
+        #        return redirect(settings.LOGIN_URL)
+
+        # if user is authenticated
+        url_is_exempt    = any(url.match(path) for url in EXEMPT_URLS )
+
+        if path == reverse('logout').lstrip('/'):
+            return logout('logout')
+
+        if  request.user.is_authenticated() and url_is_exempt:
+            return redirect(settings.LOGIN_REDIRECT_URL)
+
+        # if user is authenticated but url is not exit
+        elif request.user.is_authenticated() or url_is_exempt:
+            return None
+
+        else:
+            return redirect(settings.LOGIN_URL)
