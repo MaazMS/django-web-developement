@@ -80,6 +80,38 @@
     a. {% if user.is_authenticated %}   
     b. from django.contrib.auth.decorators import login_required 
     c. @login_required   
-       
-`https://stackoverflow.com/questions/50486207/how-to-use-while-loop-in-django-template`
-8. custom login page `https://overiq.com/django-1-10/django-logging-users-in-and-out/`     
+18. [middleware](https://github.com/MaazMS/django-web-developement/blob/Django/Document/18.md)      
+    a. What is middleware      
+    b. "Common” middleware hit (Forbids access, URL rewriting slash ,PREPEND_WWW, Sets the Content-Length )       
+    c. CsrfViewMiddleware hit (adding hidden form fields to POST forms and checking requests for the correct value).  
+    d. SessionMiddleware hit(Enables session support.)    
+    e. AuthenticationMiddleware hit(representing the currently-logged-in user, Adds the user attribute)    
+    f. MessageMiddleware hit (Enables cookie- and session-based message support)      
+    g. XFrameOptionsMiddleware hit (Clickjacking User Interface redress, UI redress, UI redressing attack for tricking a user)   
+
+19. [Custom LoginRequiredMiddleware](https://github.com/MaazMS/django-web-developement/blob/Django/Document/19.md)    
+    a. add settings.py middleware hit ('tutorial.middleware.LoginRequiredMiddleware' )    
+    b. from django.conf import settings   
+    d. 'LoginRequiredMiddleware' object is not callable    
+    e. No need @login_required decorator.  hit (AnonymousUser)    
+    f. login redirect define (hit change setting  LOGIN_URL = '/accounts/login/' )     
+    g. Allow to access some url (hit LOGIN_EXEMPT_URLS = ( r'^accounts/register/$', r'^accounts/logout/$' ))      
+    h. process_view()     
+    i. what is the use of process_view()      
+    j. How to avoid head code url hit ( settings.py LOGIN_URL = '/accounts/login/') `reverse` function    
+20. [Namespace](https://github.com/MaazMS/django-web-developement/blob/Django/Document/20.md)      
+    a. What is the namespace?   
+    b. create namespace `project_name/urls.py` hit`url(r'^accounts/', include('accounts.urls', namespace='accounts')`    
+    c. Avoid confuse.  
+    d. use namespace in html page `<a href="{% url 'accounts :view_profile' %}">`  
+    e. `reverse `  function unse namespace.    
+21. [Upload and display static files](https://github.com/MaazMS/django-web-developement/blob/Django/Document/upload_images_21.md)      
+    a. Add image column in model. hit `models.ImageField(upload_to='profile_images', blank=True)`     
+    b. Settings.py  add `MEDIA_URL = '/media/'`     
+    c. when image upload then automatically folder create in app and image store. hit `pload_to='profile_images'`        
+    d. saving files uploaded by use during development `project_name/urls.py`     
+    e. show images using template hit ` <img src="{{ user.userprofile.image.url }}" width="240">`         
+        
+           
+`https://stackoverflow.com/questions/50486207/how-to-use-while-loop-in-django-template`    
+   
