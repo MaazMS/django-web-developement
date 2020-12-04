@@ -132,3 +132,8 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/register/$',
     r'^accounts/logout/$'
 )
+
+# static files
+MEDIA_URL = '/media/'
+# where to put data at development
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tutorial/media')
