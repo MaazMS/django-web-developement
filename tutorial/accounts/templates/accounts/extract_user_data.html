@@ -5,12 +5,16 @@
     <title>extract user data</title>
 </head>
 <body>
-
-<h1> {{user}}</h1>
-<h1> {{user.username}}</h1>
-<h1> {{user.first_name}}</h1>
-<h1> {{user.last_name}}</h1>
-<h1> {{user.email}}</h1>
-
+<div class="container">
+    <h1> {{user}}</h1>
+    <h1> username :  {{user.username}}</h1>
+    <h1> first_name : {{user.first_name}}</h1>
+    <h1> last_name :{{user.last_name}}</h1>
+    <h1> email :  {{user.email}}</h1> 
+    <h1> description :  {{user.userprofile.description}}</h1>
+     {% if user.userprofile.image %}
+    <img src="{{ user.userprofile.image.url }}" width="240">
+    {% endif %}
+</div>
 </body>
 </html>
