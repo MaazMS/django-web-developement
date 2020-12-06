@@ -1,1 +1,13 @@
-<h1>This is generic view </h1>
+{% extends 'base.html' %}
+
+
+{% block body%}
+<h1>This is <strong>generic </strong> view </h1>
+<form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Submit</button>
+</form>
+{{ text }}
+{% endblock %}
