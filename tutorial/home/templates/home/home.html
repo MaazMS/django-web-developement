@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
+{% block body %}
 
-{% block body%}
-<h1>This is <strong>generic </strong> view </h1>
+
 <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br>
-            <button type="submit">Submit</button>
+    <h2>Home</h2>
+    {% csrf_token %}
+    {{ form.post }}
+    <br>
+    <button type="submit">Submit</button>
 </form>
-{{ text }}
+
+{% for post in posts%}
+    <h1>{{ post.post}}</h1>
+    <p>posted by {{post.user.get_full_name}} on {{post.update}}</p>
+{% endfor%}
+
+<h2>{{ text }}</h2>
 {% endblock %}
