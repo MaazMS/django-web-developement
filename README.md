@@ -1,4 +1,4 @@
-# django-web-developement
+# django web developement
 1. [Creating django project](https://github.com/MaazMS/django-web-developement/blob/Django/Document/1.md)    
 2. [Creating django app](https://github.com/MaazMS/django-web-developement/blob/Django/Document/2.md)  
     a. How to install django app  
