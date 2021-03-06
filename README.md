@@ -15,7 +15,7 @@
 1. [custom Edit user data using django model UserChangeForm](#custom-Edit-user-data-using-django-model-UserChangeForm)  
 1. [Change password After login the admin using django model PasswordChangeForm,update_session_auth_hash](#Change-password-After-login-the-admin-using-django-model-PasswordChangeForm,update_session_auth_hash)  
 1. Change password when user forget password using django model password_reset, password_reset_done, password_reset_confirm, password_reset_complete  
-1. [user authenticated using template in html or login_required decorator](#user-authenticated-using-template-in-html-or-login_required decorator)  
+1. user authenticated using template in html or login_required decorator  
 1. [middleware](#middleware)  
 1. [Namespace](#Namespace)  
 1. [Basic question](#Basic-question)
