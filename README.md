@@ -21,6 +21,7 @@
 1. [Basic question](#Basic-question)
 1. [Intermediate question](#Intermediate-question )
 
+## Full details 
 1. [Creating django project](https://github.com/MaazMS/django-web-developement/blob/Django/Document/1.md)    
 1. [Creating django app](https://github.com/MaazMS/django-web-developement/blob/Django/Document/2.md)  
     a. How to install django app  
